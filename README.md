@@ -3,7 +3,6 @@
 <p align="center">
   <img src="https://img.shields.io/badge/UNESCO-Gastronomi_Şehri-E94E31?style=for-the-badge&logo=unicef&logoColor=white" />
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
   <img src="https://img.shields.io/badge/GitHub_Pages-222222?style=for-the-badge&logo=github&logoColor=white" />
 </p>
 
@@ -19,7 +18,7 @@ Bu çalışma, Gaziantep'in binlerce yıllık mutfak kültürünün en önemli s
 ## 🔗 Canlı Uygulama
 Web sitesine erişmek için aşağıdaki butona tıklayabilirsiniz:
 
-[![Website](https://img.shields.io/badge/HEMEN_GÖRÜNTÜLE-CANLI_SİTE-brightgreen?style=for-the-badge&logo=google-chrome&logoColor=white)](BURAYA_LINKINI_YAPISTIR)
+[![Website](https://img.shields.io/badge/HEMEN_GÖRÜNTÜLE-CANLI_SİTE-brightgreen?style=for-the-badge&logo=google-chrome&logoColor=white)](https://muhammededev.github.io/odev-2-html-tarif-tanitim/)
 
 ---
 
@@ -27,19 +26,18 @@ Web sitesine erişmek için aşağıdaki butona tıklayabilirsiniz:
 
 | Özellik | Açıklama |
 | :--- | :--- |
-| **Responsive Tasarım** | Mobil, Tablet ve Desktop cihazlar için %100 uyumlu arayüz. |
-| **Performans** | Optimize edilmiş görseller ve hafif kod yapısı ile hızlı yüklenme süresi. |
+| **Responsive Tasarım** | Mobil, Tablet ve Desktop cihazlar için uyumlu arayüz. |
+| **Performans** | Optimize edilmiş görseller ile hızlı yüklenme süresi. |
 | **SEO Uyumluluk** | Arama motorları için semantik HTML etiketleri kullanımı. |
-| **Görsel Tasarım** | Gaziantep'in bakır ve fıstık tonlarını yansıtan özel renk paleti. |
+| **Görsel Tasarım** | Gaziantep'in dokusunu yansıtan özel içerik yönetimi. |
 
 ---
 
 ## 📁 Proje Klasör Yapısı
-Proje, bakımı kolaylaştırmak adına modüler bir yapıda kurgulanmıştır:
+Proje, belirttiğin dosya düzenine göre şu şekilde yapılandırılmıştır:
 
 ```bash
-├── 📂 assets/
-│   └── 📂 images/    # Yüksek çözünürlüklü ürün ve şehir görselleri
-├── 📄 index.html      # Ana yapı ve SEO dostu içerik
-├── 📄 style.css       # Özelleştirilmiş modern stil dosyası
-└── 📄 LICENSE         # Apache 2.0 Lisans belgesi
+├── 📂 Resimler/       # Baklava ve Gaziantep temalı görseller
+├── 📄 index.html      # Projenin ana iskeleti ve içeriği
+├── 📄 LICENSE         # Apache 2.0 Lisans belgesi
+└── 📄 README.md       # Proje tanıtım ve dökümantasyon dosyası
