@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaziantep Baklavası | Premium Gastronomi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Değişkenleri: Tasarımın ana renklerini ve hızlarını merkezi olarak tutar */
+        :root {
+            --gold: #d4af37; /* Altın sarısı ana renk */
+            --gold-glow: rgba(212, 175, 55, 0.4); /* Parlama efekti için şeffaf altın */
+            --pistachio: #27ae60; /* Fıstık yeşili tonu */
+            --dark-bg: #050505; /* Arka plan koyu siyah */
+            --text-light: #f4f4f4; /* Yazılar için kırık beyaz */
+            --glass: rgba(255, 255, 255, 0.03); /* Cam efekti şeffaflığı */
+            --glass-border: rgba(255, 255, 255, 0.08); /* Camın ince kenar çizgisi */
+            --bezier: cubic-bezier(0.4, 0, 0.2, 1); /* Yumuşak akış animasyon eğrisi */
+        }
+
+        /* Tüm elemanların varsayılan boşluklarını sıfırlayan temel CSS ayarı */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        /* Gövde ayarları: Arka plan siyah ve yazı tipi Poppins */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden; /* Sağ tarafa taşmaları ve kaydırmayı engeller */
+            -webkit-font-smoothing: antialiased; /* Yazı fontunu daha kaliteli gösterir */
+        }
+
+        /* --- HEADER (HTML5): ÜST MENÜ --- */
+        header {
+            position: fixed; /* Sayfa aşağı kaysa da menü yukarıda asılı kalır */
+            top: 0; width: 100%; z-index: 2000;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(20px); /* Arka planı bulandırarak cam etkisi yapar */
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: var(--bezier);
+        }
+
+        /* Navigasyon çubuğunu hizalayan kapsayıcı */
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo tasarımı: Altın sarısı ve Playfair fontu */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            transition: var(--bezier);
+        }
+        
+        /* Logo üzerine gelince parlama efekti verir */
+        .logo:hover { filter: drop-shadow(0 0 8px var(--gold-glow)); }
+
+        /* Menü linklerinin yan yana dizilmesi */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        /* Link yazı stilleri */
+        .nav-links a {
+            text-decoration: none;
+            color: #999;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: var(--bezier);
+        }
+
+        /* Linklerin üzerine gelince altına altın rengi vermesi */
+        .nav-links a:hover { color: var(--gold); transform: translateY(-1px); }
+
+        /* Sağdaki Keşfet butonu stili */
+        .cta-btn {
+            background: var(--gold);
+            color: #000 !important;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 0.75rem !important;
+            font-weight: 700 !important;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border: 1px solid transparent;
+        }
+
+        /* --- SECTION (HTML5): HERO GİRİŞ ALANI --- */
+        .hero {
+            height: 100vh; /* Ekranın %100'ünü kaplar */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* Arka plan görseli ve üzerine koyu bir katman (gradient) */
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.3)), 
+                        url('Resimler/Resim1.jpeg') no-repeat center center/cover;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        /* Hero bölümünün altına yumuşak siyah geçiş (fade) ekler */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 200px;
+            background: linear-gradient(to top, var(--dark-bg), transparent);
+        }
+
+        /* Hero ana başlık tasarımı: Dinamik font (clamp) kullanır */
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 12vw, 8rem);
+            margin-bottom: 15px;
+            line-height: 0.85;
+            letter-spacing: -2px;
+            text-shadow: 2px 4px 20px rgba(0,0,0,0.5);
+            animation: heroReveal 1.2s var(--bezier); /* Yazının açılış animasyonu */
+        }
+
+        /* Sayfa açıldığında başlığın alttan gelme animasyonu */
+        @keyframes heroReveal {
+            from { opacity: 0; transform: translateY(40px) scale(0.95); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+
+        /* Hero altındaki slogan metni */
+        .hero p {
+            font-size: clamp(0.8rem, 2vw, 1.1rem);
+            color: var(--gold);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* --- MAIN (HTML5): ANA İÇERİK KAPSAYICISI --- */
+        main.container {
+            max-width: 1200px;
+            margin: -100px auto 100px; /* Üstteki görselin üstüne binerek derinlik sağlar */
+            position: relative;
+            z-index: 10;
+            padding: 0 25px;
+        }
+
+        /* ARTICLE (HTML5): Cam Efektli Kart Tasarımı */
+        article.glass-card {
+            background: rgba(15, 15, 15, 0.65);
+            backdrop-filter: blur(40px); /* Cam efekti bulandırması */
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            padding: 80px 60px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+            /* Grid sistemi ile içerikleri yan yana veya alt alta dizer */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 80px;
+        }
+
+        /* Kart içi alt başlıkların (h2) tasarımı */
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 35px;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        /* Bölüm üstü küçük başlıklar ve solundaki altın çizgi */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 700;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 25px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        /* Malzeme listesi elemanlarının tasarımı */
+        ul { list-style: none; }
+        .ingredients li {
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            display: flex;
+            align-items: center;
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: #ccc;
+            transition: var(--bezier);
+        }
+
+        /* Malzemelerin üzerine gelince sağa doğru esneme efekti */
+        .ingredients li:hover {
+            color: #fff;
+            padding-left: 10px;
+            border-bottom-color: var(--gold);
+        }
+
+        /* Malzeme listesi başındaki yıldız işareti */
+        .ingredients li::before {
+            content: "✦";
+            color: var(--gold);
+            margin-right: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Hazırlanış adımları listesi */
+        .steps li {
+            margin-bottom: 35px;
+            display: flex;
+            gap: 25px;
+            transition: var(--bezier);
+        }
+
+        /* Adımların üzerine gelince hafif sağa kayması */
+        .steps li:hover { transform: translateX(10px); }
+
+        /* Adım numaralarının (01, 02 vb.) yuvarlak çerçeve tasarımı */
+        .step-num {
+            background: transparent;
+            color: var(--gold);
+            min-width: 42px;
+            height: 42px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            transition: var(--bezier);
+        }
+
+        /* Adım numarasının üzerine gelince içinin dolması */
+        .steps li:hover .step-num {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        /* --- FOOTER (HTML5): SAYFA ALTI --- */
+        footer {
+            padding: 100px 20px;
+            background: #020202;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        /* Footer'daki logonun degrade (renk geçişli) tasarımı */
+        .footer-logo { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.5rem; 
+            color: #fff; 
+            margin-bottom: 25px; 
+            display: block;
+            background: linear-gradient(to bottom, #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        /* En alttaki telif ve teknik bilgi yazısı */
+        .footer-credit {
+            color: #444;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 40px;
+            font-weight: 700;
+        }
+
+        /* --- RESPONSIVE TASARIM (MOBİL AYARLAR) --- */
+        @media (max-width: 900px) {
+            .nav-links { display: none; } /* Cep telefonunda menüyü gizler */
+            article.glass-card { 
+                padding: 50px 25px; 
+                margin-top: -50px;
+                border-radius: 0; /* Mobil ekranda tam genişlik sağlar */
+            }
+            h2 { font-size: 2.2rem; }
+            .hero h1 { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">ANTEP GOLD</a>
+            <ul class="nav-links">
+                <li><a href="#">Anasayfa</a></li>
+                <li><a href="#hikaye">Miras</a></li>
+                <li><a href="#tarif">Reçete</a></li>
+                <li><a href="https://tr.wikipedia.org/wiki/Baklava" target="_blank" class="cta-btn">Keşfet</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <aside class="hero-content">
+            <p>Geleneksel Mükemmeliyet</p>
+            <h1>BAKLAVA</h1>
+            <p style="color: #fff; margin-top: 20px; opacity: 0.7;">Sanatın Lezzetle Buluştuğu Nokta</p>
+        </aside>
+    </section>
+
+    <main class="container" id="tarif">
+        <article class="glass-card">
+            
+            <section>
+                <div class="section-title">Hammadde Seçkisi</div>
+                <h2>Seçkin Malzemeler</h2>
+                <ul class="ingredients">
+                    <li>İncecik El Açması 40 Kat Yufka</li>
+                    <li>Hasat Dönemi Boz Antep Fıstığı</li>
+                    <li>Saf Keçi & Koyun Sade Yağı</li>
+                    <li>Odun Ateşinde Kristal Şeker Şerbeti</li>
+                    <li>Taş Değirmen Buğday Nişastası</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="section-title">Ustalık Süreci</div>
+                <h2>Hazırlanışı</h2>
+                <ul class="steps">
+                    <li>
+                        <div class="step-num">01</div>
+                        <p>Yufkalar mermer tezgahlarda tek tek elde açılır, ışık sızacak kadar inceltilir.</p>
+                    </li>
+                    <li>
+                        <div class="step-num">02</div>
+                        <p>40 kat yufka, her katı saf yağ ile yağlanarak tepsiye sabırla dizilir.</p>
+                    </li>
+                    <li>
+                        <div class="step-num">03</div>
+                        <p>Taze fıstıklar merkez katmana homojen şekilde yayılır ve üst katlar kapatılır.</p>
+                    </li>
+                    <li>
+                        <div class="step-num">04</div>
+                        <p>Taş fırında ağır ateşte altın rengine ulaşınca sıcak şerbetle buluşturulur.</p>
+                    </li>
+                </ul>
+            </section>
+            
+        </article>
+    </main>
+
+    <footer id="hikaye">
+        <span class="footer-logo">Antep Gold</span>
+        <p style="color: #666; max-width: 600px; margin: 0 auto; font-weight: 300; font-size: 0.95rem;">
+            Bu çalışma, dünyanın gastronomi merkezi Gaziantep'in asırlık mirasını dijital bir vizyonla sunmak için hazırlanmıştır.
+        </p>
+        <p class="footer-credit">© 2026 DEPLOYED ON GITHUB // GASTRONOMY-V2 // ODEV-2</p>
+    </footer>
+
+</body>
+</html>
